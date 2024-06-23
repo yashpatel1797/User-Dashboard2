@@ -1,8 +1,9 @@
 <template>
-    <div class="container mx-auto px-4">
-      <h2 class="text-2xl font-bold mb-4">Users</h2>
-      <div class="mb-4 flex flex-col sm:flex-row justify-end gap-2 items-start sm:items-center">
-        <div class="w-full sm:w-auto mb-2 sm:mb-0">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+      <h2 class="text-2xl font-bold mb-4 sm:mb-0">Users</h2>
+      <div class="flex flex-col sm:flex-row gap-2">
+        <div class="w-full sm:w-auto">
           <label for="search" class="block font-bold mb-1">Search</label>
           <input
             id="search"
@@ -24,16 +25,18 @@
           </select>
         </div>
       </div>
-      <div class="grid gap-4">
-        <UserCard
-          v-for="user in filteredAndSortedUsers"
-          :key="user.id"
-          :user="user"
-          @click="$emit('user-selected', user.id)"
-        />
-      </div>
     </div>
-  </template>
+    <div class="grid">
+      <UserCard
+        v-for="user in filteredAndSortedUsers"
+        :key="user.id"
+        :user="user"
+        @click="$emit('user-selected', user.id)"
+      />
+    </div>
+  </div>
+</template>
+
   
   <script>
   import { ref, computed } from 'vue';
